@@ -11,7 +11,7 @@ Navier-Stokes equation (1):
 Thus, the Burgers' equation neglects the pressure and gravity terms from
 (1)transforms it into a quasi-linear parabolic PDE. We
 have written down the expanded equation for 2D Cartesian coordinates below assuming
-that ![](http://latex.codecogs.com/png.latex?%5Cmathbf%7Bu%7D%3D%5Cleft%3C%20u%28t%2Cx%2Cy%29%2C%20v%28t%2Cx%2Cy%29%20%5Cright%3E) and letting ![](http://latex.codecogs.com/png.latex?%5Cinline%20%5Cnu%3D%5Cmu/%5Crho) :
+that ![](http://latex.codecogs.com/png.latex?%5Cinline%20%5Cmathbf%7Bu%7D%3D%5Cleft%3C%20u%28t%2Cx%2Cy%29%2C%20v%28t%2Cx%2Cy%29%20%5Cright%3E) and letting ![](http://latex.codecogs.com/png.latex?%5Cinline%20%5Cnu%3D%5Cmu/%5Crho) :
 
 Burgers' Equation:
 
