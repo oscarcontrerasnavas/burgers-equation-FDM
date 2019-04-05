@@ -1,6 +1,4 @@
 # Viscous Burgers' Equation
-{: #anchor-1}
-
 The Burgers' equation or Bateman-Burgers' equation was first introduced in 1915
 and later studied in 1948 as a simplification of the Navier-Stock equation to
 understand its main mathematical properties such as the tendency of the viscous
@@ -8,10 +6,7 @@ term to cero or the nonlinerity of the convective.
 
 Navier-Stokes equation:
 
-$$
-\rho\dfrac{\partial\mathbf{u}}{\partial t} + \rho(\mathbf{u}\cdot\nabla)\mathbf{u} =
--\nabla p + \mu\nabla^2\mathbf{u} + \rho\mathbf{g} \tag{1}
-$$
+![](http://latex.codecogs.com/png.latex?%5Crho%5Cdfrac%7B%5Cpartial%5Cmathbf%7Bu%7D%7D%7B%5Cpartial%20t%7D%20&plus;%20%5Crho%28%5Cmathbf%7Bu%7D%5Ccdot%5Cnabla%29%5Cmathbf%7Bu%7D%20%3D%20-%5Cnabla%20p%20&plus;%20%5Cmu%5Cnabla%5E2%5Cmathbf%7Bu%7D%20&plus;%20%5Crho%5Cmathbf%7Bg%7D)
 
 Thus, the Burgers' equation neglects the pressure and gravity terms from
 $$(1)$$ transforms it into a quasi-linear parabolic PDE. We
