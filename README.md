@@ -77,47 +77,25 @@ time index *n*, x-direction index *i* and y-direction index *j*.
 
 **Forward Differences for partial derivative with respect to time**:
 
-$$
-\dfrac{\partial{u}}{\partial{t}} =
-\dfrac{u^{n+1}_{i,j}-u^{n}_{i,j}}{\Delta{t}}
-$$
+![](http://latex.codecogs.com/png.latex?%5Cdfrac%7B%5Cpartial%7Bu%7D%7D%7B%5Cpartial%7Bt%7D%7D%20%3D%20%5Cdfrac%7Bu%5E%7Bn&plus;1%7D_%7Bi%2Cj%7D-u%5E%7Bn%7D_%7Bi%2Cj%7D%7D%7B%5CDelta%7Bt%7D%7D)
 
 **Backward Differences for partial derivative with respect to x**:
 
-$$
-\dfrac{\partial{u}}{\partial{x}} =
-\dfrac{u^{n}_{i,j}-u^{n}_{i-1,j}}{\Delta{x}}
-$$
+![](http://latex.codecogs.com/png.latex?%5Cdfrac%7B%5Cpartial%7Bu%7D%7D%7B%5Cpartial%7Bx%7D%7D%20%3D%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi%2Cj%7D-u%5E%7Bn%7D_%7Bi-1%2Cj%7D%7D%7B%5CDelta%7Bx%7D%7D)
 
 **Backward Differences for partial derivative with respect to y**:
 
-$$
-\dfrac{\partial{u}}{\partial{y}} =
-\dfrac{u^{n}_{i,j}-u^{n}_{i,j-1}}{\Delta{y}}
-$$
+![](http://latex.codecogs.com/png.latex?%5Cdfrac%7B%5Cpartial%7Bu%7D%7D%7B%5Cpartial%7By%7D%7D%20%3D%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi%2Cj%7D-u%5E%7Bn%7D_%7Bi%2Cj-1%7D%7D%7B%5CDelta%7By%7D%7D)
 
 **2nd Order Central Differences for 2nd order partial derivative with respect to x**:
 
-$$
-\dfrac{\partial^2{u}}{\partial{x}^2} =
-\dfrac{u^{n}_{i+1,j}-2u^{n}_{i,j}+u^{n}_{i-1,j}}{\Delta{x}^2}
-$$
+![](http://latex.codecogs.com/png.latex?%5Cdfrac%7B%5Cpartial%5E2%7Bu%7D%7D%7B%5Cpartial%7Bx%7D%5E2%7D%20%3D%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi&plus;1%2Cj%7D-2u%5E%7Bn%7D_%7Bi%2Cj%7D&plus;u%5E%7Bn%7D_%7Bi-1%2Cj%7D%7D%7B%5CDelta%7Bx%7D%5E2%7D)
 
 **2nd Order Central Differences for 2nd order partial derivative with respect to y**:
 
-$$
-\dfrac{\partial^2{u}}{\partial{y}^2} =
-\dfrac{u^{n}_{i,j+1}-2u^{n}_{i,j}+u^{n}_{i,j-1}}{\Delta{y}^2}
-$$
-
-<div class='alert alert-info'>
-<strong>Note:</strong> Don't worry if you feel lost at this point. You probably
-need to keep reading or go to the reference at the bottom of the page for detailed
-information.
-</div>
+![](http://latex.codecogs.com/png.latex?%5Cdfrac%7B%5Cpartial%5E2%7Bu%7D%7D%7B%5Cpartial%7By%7D%5E2%7D%20%3D%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi%2Cj&plus;1%7D-2u%5E%7Bn%7D_%7Bi%2Cj%7D&plus;u%5E%7Bn%7D_%7Bi%2Cj-1%7D%7D%7B%5CDelta%7By%7D%5E2%7D)
 
 ## Algebraic Model
-{: #anchor-4}
 
 Still here? Good. From here, we will transpose our PDE's —one for the x-direction and
 other for the y-direction— and solved for the next step in time, if you read
@@ -128,18 +106,7 @@ section.
 
 With the previous settings, we get:
 
-$$
-\dfrac{u^{n+1}_{i,j}-u^{n}_{i,j}}{\Delta{t}} +
-u^{n}_{i,j} \dfrac{u^{n}_{i,j}-u^{n}_{i-1,j}}{\Delta{x}} +
-v^{n}_{i,j} \dfrac{u^{n}_{i,j}-u^{n}_{i,j-1}}{\Delta{y}}
-$$
-
-$$=$$
-
-$$
-\nu \dfrac{u^{n}_{i+1,j}-2u^{n}_{i,j}+u^{n}_{i-1,j}}{\Delta{x}^2} +
-\nu \dfrac{u^{n}_{i,j+1}-2u^{n}_{i,j}+u^{n}_{i,j-1}}{\Delta{y}^2}
-$$
+![](http://latex.codecogs.com/png.latex?%5Cdpi%7B150%7D%20%5Ctiny%20%5Cdfrac%7Bu%5E%7Bn&plus;1%7D_%7Bi%2Cj%7D-u%5E%7Bn%7D_%7Bi%2Cj%7D%7D%7B%5CDelta%7Bt%7D%7D%20&plus;%20u%5E%7Bn%7D_%7Bi%2Cj%7D%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi%2Cj%7D-u%5E%7Bn%7D_%7Bi-1%2Cj%7D%7D%7B%5CDelta%7Bx%7D%7D%20&plus;%20v%5E%7Bn%7D_%7Bi%2Cj%7D%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi%2Cj%7D-u%5E%7Bn%7D_%7Bi%2Cj-1%7D%7D%7B%5CDelta%7By%7D%7D%20%3D%20%5Cnu%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi&plus;1%2Cj%7D-2u%5E%7Bn%7D_%7Bi%2Cj%7D&plus;u%5E%7Bn%7D_%7Bi-1%2Cj%7D%7D%7B%5CDelta%7Bx%7D%5E2%7D%20&plus;%20%5Cnu%20%5Cdfrac%7Bu%5E%7Bn%7D_%7Bi%2Cj&plus;1%7D-2u%5E%7Bn%7D_%7Bi%2Cj%7D&plus;u%5E%7Bn%7D_%7Bi%2Cj-1%7D%7D%7B%5CDelta%7By%7D%5E2%7D)
 
 And,
 
