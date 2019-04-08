@@ -97,7 +97,7 @@ def burgers(L=2, M=2, T=0, Nx=40, Ny=40, Nt=2500, nu=0.5):
     return x, y, u
 
 
-def update_data(t):
+def update_data(t, nu):
     """ Function that updates the surface
 
     Parameters
@@ -105,7 +105,7 @@ def update_data(t):
     t : float
         The current time being plotting.
     """
-    x, y, u = burgers(T=t)
+    x, y, u = burgers(T=t, nu=nu)
     x, y = np.meshgrid(x, y)
     ax.collections = []
     ax.plot_surface(x, y, u, cmap=cm.plasma)
@@ -114,6 +114,7 @@ def update_data(t):
 # Fist Frame. We need to create our fig object for the FuncAnimation()
 x, y, u = burgers()
 fig = plt.figure(figsize=(10, 5))
+fig.suptitle("Burgers' Equation for $\nu = 0$")
 ax = fig.add_subplot(111, projection="3d")
 x, y = np.meshgrid(x, y)
 surf = ax.plot_surface(x, y, u, cmap=cm.plasma)
@@ -126,7 +127,10 @@ ax.set_ylabel('$y$')
 ax.set_zlabel('$u$')
 
 # Animation
-anim = animation.FuncAnimation(fig, update_data, np.linspace(0, 1, 100))
+t = np.linspace(0, 1, 100)
+nu = 0
+anim = animation.FuncAnimation(fig, update_data, t, fargs=(nu, ), interval=0)
 # Uncomment next line to save the animation
-# anim.save('burgersDiffusion.mp4')
+# anim.save('burgersConvective.mp4', fps=24)
+# print('Done')
 plt.show()
