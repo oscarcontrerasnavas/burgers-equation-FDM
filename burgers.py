@@ -114,7 +114,7 @@ def update_data(t, nu):
 # Fist Frame. We need to create our fig object for the FuncAnimation()
 x, y, u = burgers()
 fig = plt.figure(figsize=(10, 5))
-fig.suptitle("Burgers' Equation for $\nu = 0$")
+fig.suptitle("Burgers' Equation for $\\nu = 0$")
 ax = fig.add_subplot(111, projection="3d")
 x, y = np.meshgrid(x, y)
 surf = ax.plot_surface(x, y, u, cmap=cm.plasma)
