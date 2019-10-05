@@ -28,4 +28,4 @@ a beautiful animated plot.
 <hr />
 
 For more information about the mathematical background and how it was coded,
-please follow my blog [here](https://oscarcontrerasnavas.github.io/python/burgers-equation-with-finite-difference-method.html)
+please follow my blog [here](https://oscarcontrerasnavas.github.io/solving-burgers-equation-introduction-to-fdm)

@@ -98,13 +98,16 @@ def burgers(L=2, M=2, T=0, Nx=40, Ny=40, Nt=2500, nu=0.5):
 
 
 def update_data(t, nu):
-    """ Function that updates the surface
-
+    """[summary]
+    
     Parameters
     ----------
-    t : float
-        The current time being plotting.
+    t : [type]
+        [description]
+    nu : [type]
+        [description]
     """
+
     x, y, u = burgers(T=t, nu=nu)
     x, y = np.meshgrid(x, y)
     ax.collections = []
