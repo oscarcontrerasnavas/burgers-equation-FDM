@@ -18,7 +18,7 @@ B.C.: 1 for x = 0, 2 and y = 0, 2
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm # Colour map
+from matplotlib import cm  # Colour map
 import matplotlib.animation as animation
 
 
@@ -57,11 +57,11 @@ def burgers(L=2, M=2, T=0, Nx=40, Ny=40, Nt=2500, nu=0.5):
     # Vectors
     x = np.linspace(0, L, Nx)
     y = np.linspace(0, M, Ny)
-    
+
     # steps size
-    dx = L/Nx
-    dy = M/Ny
-    dt = T/Nt
+    dx = L / Nx
+    dy = M / Ny
+    dt = T / Nt
 
     # Initial conditions
     # In math notation the first index correspond to x direction and the
@@ -69,10 +69,10 @@ def burgers(L=2, M=2, T=0, Nx=40, Ny=40, Nt=2500, nu=0.5):
     # to down and the second one is left to right, so we have to invert them.
     u = np.ones([Ny, Nx])
     v = np.ones([Ny, Nx])
-    u[int(0.5/dx): int(1/dx)+1, int(0.5/dy): int(1/dy)+1] = 2
-    v[int(0.5/dx): int(1/dx)+1, int(0.5/dy): int(1/dy)+1] = 2
+    u[int(0.5 / dx) : int(1 / dx) + 1, int(0.5 / dy) : int(1 / dy) + 1] = 2
+    v[int(0.5 / dx) : int(1 / dx) + 1, int(0.5 / dy) : int(1 / dy) + 1] = 2
 
-    for _ in range(Nt): # The _ means we don't need the loop's index
+    for _ in range(Nt):  # The _ means we don't need the loop's index
         un = u.copy()
         vn = v.copy()
 
@@ -81,25 +81,29 @@ def burgers(L=2, M=2, T=0, Nx=40, Ny=40, Nt=2500, nu=0.5):
         # direction and the second one to the y direction but in arrays
         # the first index is up to down and the second one is left to right,
         # we must invert them.
-        u[1:-1, 1:-1] = un[1:-1, 1:-1] - \
-            un[1:-1, 1:-1] *dt/dx * (un[1:-1, 1:-1] - un[1:-1, :-2]) - \
-            vn[1:-1, 1:-1] *dt/dy * (un[1:-1, 1:-1] - un[:-2, 1:-1]) + \
-            nu*dt/dx**2 * (un[1:-1, 2:] - 2*un[1:-1, 1:-1] + un[1:-1, :-2]) + \
-            nu*dt/dy**2 * (un[2:, 1:-1] - 2*un[1:-1, 1:-1] + un[:-2, 1:-1])
+        u[1:-1, 1:-1] = (
+            un[1:-1, 1:-1]
+            - un[1:-1, 1:-1] * dt / dx * (un[1:-1, 1:-1] - un[1:-1, :-2])
+            - vn[1:-1, 1:-1] * dt / dy * (un[1:-1, 1:-1] - un[:-2, 1:-1])
+            + nu * dt / dx ** 2 * (un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2])
+            + nu * dt / dy ** 2 * (un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1])
+        )
 
         # For v
-        v[1:-1, 1:-1] = vn[1:-1, 1:-1] - \
-            un[1:-1, 1:-1] *dt/dx * (vn[1:-1, 1:-1] - vn[:-2, 1:-1]) - \
-            vn[1:-1, 1:-1] *dt/dy * (vn[1:-1, 1:-1] - vn[1:-1, :-2]) + \
-            nu*dt/dx**2 * (vn[2:, 1:-1] - 2*vn[1:-1, 1:-1] + vn[:-2, 1:-1]) + \
-            nu*dt/dy**2 * (vn[1:-1, 2:] - 2*vn[1:-1, 1:-1] + vn[1:-1, :-2])
-            
+        v[1:-1, 1:-1] = (
+            vn[1:-1, 1:-1]
+            - un[1:-1, 1:-1] * dt / dx * (vn[1:-1, 1:-1] - vn[:-2, 1:-1])
+            - vn[1:-1, 1:-1] * dt / dy * (vn[1:-1, 1:-1] - vn[1:-1, :-2])
+            + nu * dt / dx ** 2 * (vn[2:, 1:-1] - 2 * vn[1:-1, 1:-1] + vn[:-2, 1:-1])
+            + nu * dt / dy ** 2 * (vn[1:-1, 2:] - 2 * vn[1:-1, 1:-1] + vn[1:-1, :-2])
+        )
+
     return x, y, u
 
 
 def update_data(t, nu):
     """[summary]
-    
+
     Parameters
     ----------
     t : [type]
@@ -125,15 +129,16 @@ ax.set_xlim(0, 2)
 ax.set_ylim(0, 2)
 ax.set_zlim(1, 2)
 ax.view_init(60, 135)
-ax.set_xlabel('$x$')
-ax.set_ylabel('$y$')
-ax.set_zlabel('$u$')
+ax.set_xlabel("$x$")
+ax.set_ylabel("$y$")
+ax.set_zlabel("$u$")
 
 # Animation
 t = np.linspace(0, 1, 100)
 nu = 0
-anim = animation.FuncAnimation(fig, update_data, t, fargs=(nu, ), interval=0)
+anim = animation.FuncAnimation(fig, update_data, t, fargs=(nu,), interval=100)
+animWriter = animation.PillowWriter(fps=30) 
 # Uncomment next line to save the animation
-# anim.save('burgersConvective.mp4', fps=24)
-# print('Done')
+anim.save("animation.gif", animWriter)
+print('Done')
 plt.show()
